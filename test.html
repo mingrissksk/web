@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>无标题文档</title>
+	<style>
+		body,p,img{
+			margin:0; 
+			padding:0;}
+
+		#box123{
+			width:750px;
+			height:402px;
+			position:relative;
+			margin:100px auto;}
+
+		#img123{
+			width:300px;
+			height:300px;
+			position:absolute;
+			border: 1px solid #ccc;
+			left:0;
+			top:0;}
+
+		#slider{
+			width:112.5px;
+			height:112.5px;
+			position:absolute;
+			left:0;
+			top:0;
+			background:#CCC;
+			opacity:0.4;
+			cursor: move;
+			display:none; 
+			filter:alpha(opacity=40);}
+
+		#img1223{
+			position:absolute;
+			right:0;
+			top:0;
+			display:none; 
+			border: 1px solid #000;
+			width:300px;
+			height:300px;
+			overflow:hidden;}
+
+		#Bimg{
+			position:absolute;
+			left:0;
+			top:0;}
+	</style>
+</head>
+
+<body>
+ 	<div id="box123">
+	    <div id="img123">
+	         <img src="images copy/13.jpg" width="300" height="300"/>
+	         <div id="slider"></div>
+	  	</div>
+       
+	    <div id="img1223">
+	        <img src="images copy/13.jpg"  id="Bimg"/>
+	    </div>
+  	</div>
+  	<script type="text/javascript">
+		//1. 获取元素
+		var box123 = document.getElementById("box123");
+		var img123 = document.getElementById("img123");
+		var slider = document.getElementById("slider");
+		var img1223 = document.getElementById("img1223");
+		var Bimg = document.getElementById("Bimg");
+
+		//2. 给小盒子添加事件，移入和移出、移动	 移入：浮动的slider和img2显示
+		img123.onmouseover = function(){
+			slider.style.display = "block";
+			img1223.style.display = "block";
+		}
+		img123.onmouseout = function(){
+			slider.style.display = "none";
+			img1223.style.display = "none";
+		}
+		img123.onmousemove = function(ev){
+			var ev = ev||window.event;
+			//（1）跟随鼠标的位置来计算放大镜的位置
+			var left = ev.clientX - box123.offsetLeft - slider.offsetWidth/2;
+			var top = ev.clientY - box123.offsetTop - slider.offsetHeight/2;
+			var maxLeft = img123.offsetWidth - slider.offsetWidth;
+			var maxTop = img123.offsetHeight - slider.offsetHeight;
+			left = left>maxLeft?maxLeft:left<0?0:left;
+			top = top>maxTop?maxTop:top<0?0:top;
+
+			// (2)设置放大镜的位置
+			slider.style.left = left +"px";
+			slider.style.top = top +"px";
+
+			//（3)根据放大镜的位置计算右侧大图移动的比例
+			var w = left/maxLeft;
+			var h = top/maxTop;
+
+			// (4)计算大图最大的移动范围
+			var BmaxLeft = img1223.offsetWidth - Bimg.offsetWidth; 
+			var BmaxTop = img1223.offsetHeight - Bimg.offsetHeight; 
+
+			// (5)根据比例计算右侧图片的移动距离，设置值
+			Bimg.style.left = w*BmaxLeft + "px";
+			Bimg.style.top = h*BmaxTop + "px";
+		}
+  	</script>
+</body>
+</html>
