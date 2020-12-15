@@ -409,10 +409,10 @@
 			var index = this.getAttribute("title");
 			var imgSrc = "";
 			if (index <= 2) {
-				imgSrc = "./images/star1.png";
+				imgSrc = "images/star1.png";
 			}
 			else {
-				imgSrc = "./images/star2.png";
+				imgSrc = "images/star2.png";
 			}
 			for (var j = 0; j < index; j++) {
 				picList[j].src = imgSrc;
@@ -424,7 +424,7 @@
 				return;
 			}
 			for (var j = 0; j < picList.length; j++) {
-				picList[j].src = "./images/star0.png";
+				picList[j].src = "images/star0.png";
 			}
 			txt.innerHTML = "";
 		}
