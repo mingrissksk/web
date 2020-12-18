@@ -2,7 +2,6 @@
     padding: 0;
     margin: 0;
 }
-
 a {
     text-decoration: none;
 }
@@ -502,12 +501,6 @@ body {
         font-size: 23px;
         color: #a5027c;
     }
-    timerss{
-        width: 200px;
-        height: 50px;
-        
-        border: #3f0230 1PX solid;
-    }
     /* 用户 */
     #user{
         width: 500px;
@@ -589,10 +582,7 @@ body {
         height: 40px;
        
     }
-    p {
-        color: red;
-
-    }
+    
 
     .add {
         color: white;
@@ -725,10 +715,10 @@ body {
     }
     /* 回到顶部 */
     body,html{
-        height:200px;
+        height:500px;
     }
     .up {
-        display: none; width: 100px; height: 100px; 
+        width: 100px; height: 100px; 
         position: fixed; right: 10px; bottom: 20px;
     }
     #peimingming{
